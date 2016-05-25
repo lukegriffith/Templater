@@ -33,9 +33,38 @@ InModuleScope -ModuleName "Templater" {
         
         Context "Directory" {
             
+            Mock Document {
+                return [pscustomobject]@{
+                    Title = "I am a file.txt"
+                }
+            }
+            
+            $output = Directory -name "MyDir" -Children {
+                Document  
+            }
+            
+            
+            it 'Directory containg a document' {
+                
+                $output.Type | should be "Directory"
+                $output.Name | should be "MyDir"
+                $output.Children[0].Title | should be "I am a file.txt"
+            }
+            
         }
         
         Context "Document" {
+        
+        
+            $output = Document -Name "MyDocument" -Body "This is my Body" 
+               
+            it 'Outputs a document object' {
+                
+                $output.Type | should be "Document"
+                $output.Name | should be "MyDocument"
+                $output.Body | should be "This is my Body"
+                
+            }
         
                    
         }

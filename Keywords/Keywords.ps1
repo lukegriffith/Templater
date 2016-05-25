@@ -14,6 +14,7 @@ function Template {
     
     [pscustomobject]@{
         
+        Type = "Template"
         Name = $Name
         TemplateParameters = $TemplateParameters
         Children = $Items.Invoke()
@@ -26,8 +27,14 @@ function Directory {
     
     param(
         [String]$Name,
-        [ScrptBlock]$Children
+        [ScriptBlock]$Children
     )
+    
+    return [PSCustomObject]@{
+        Type = "Directory"
+        Name = $Name
+        Children = $Children.Invoke()
+    }
     
     
 }
@@ -41,5 +48,13 @@ function Document {
         [Switch]$DisableAutoInjectParameters,
         [Hashtable]$Parameters
     )
+    
+    
+    return [PSCustomObject]@{
+        Type = "Document"
+        Name = $Name
+        Body = $Body
+    }
+    
     
 }
