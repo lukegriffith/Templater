@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command":  "${env.windir}\\sysnative\\windowspowershell\\v1.0\\PowerShell.exe",
+    "isShellCommand": true,
+    "args": ["-NoProfile","-ExecutionPolicy", "Bypass", "Import-Module psake;", "invoke-psake -buildFile ${cwd}\\build.ps1 -taskList"],
+    "showOutput": "always",
+    "suppressTaskName": false,
+    "tasks":[
+        
+        {
+            "taskName": "Test",
+            "isTestCommand": true,
+            
+        }
+        
+        
+    ]
+    
+}
