@@ -3,7 +3,7 @@ function Template {
 
     param(
         [String]$Name,
-        [Hashtable]$TemplateParameters,
+        [Hashtable]$TemplateParameters = $PSBoundParameters,
         [ScriptBlock]$rootItem
     )
     

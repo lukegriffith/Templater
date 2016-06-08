@@ -1,4 +1,11 @@
- Template -Name "TestTemplate" -TemplateParameters @{ModuleName="TestModule";ModuleBody="function test {}"} -rootItem { 
+ Param(
+     [Parameter(HelpMessage="name for module.")]
+     [string]$ModuleName,
+     [Parameter(HelpMessage="Body of module.")]
+     [string]$ModuleBody
+ )
+ 
+ Template -Name $ModuleName -rootItem { 
 
     
     Directory -Name $ModuleName -Children { 
