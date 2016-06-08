@@ -4,7 +4,7 @@ Declarative PowerShell template system. Able to create folder structures and doc
 
 Current Features 
 - Use the PowerShell language to scaffold out a directory structure with documents.
-- Very basic parameter passing from the template.
+- Very basic parameter binding from the template.
 - use Invoke-Template to invoke the templates located in ModuleRoot\Templates
 
 Features to implement 
