@@ -1,6 +1,6 @@
 # psTemplater
 
-Declarative PowerShell template system. Able to create folder strictures and document templates using PowerShell.
+Declarative PowerShell template system. Able to create folder structures and document templates using PowerShell.
 
 Current Features 
 - Use the PowerShell language to scaffold out a directory structure with documents.
