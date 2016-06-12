@@ -1,4 +1,5 @@
 
+
 InModuleScope -ModuleName "Templater" {
 
     Describe "Template\Keywords" {
@@ -11,16 +12,14 @@ InModuleScope -ModuleName "Templater" {
                 }
             }
             
-            $Output = Template -Name "TestTemplate" -Items {
+            $Output = Template -Name "TestTemplate" -rootItem {
                 
                 Document
             }
             
             it 'Tempate should exist and contain a Document' {
                 
-                
                 $Output | Should be $true
-                
                 $Output.Children | measure | % Count | should be 1
                 
             }
@@ -80,7 +79,7 @@ InModuleScope -ModuleName "Templater" {
             }
             
                     
-            $Output = Template -Name "ParameterBinding" -Items {
+            $Output = Template -Name "ParameterBinding" -rootItem {
                 
                 Document -Name $DocumentName -Body "My content is $Content"
                 

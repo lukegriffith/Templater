@@ -46,20 +46,21 @@ function HasChildren {
 
 
 function WriteItem {
-
     param($parentPath, $item)
 
-    switch ($item.type) {
+    $param = @{}
 
+    switch ($item.type) {
         "Document" {
-            Write-Verbose ("Writing document item {0} at {1}" -f $item.Name, $parentPath) 
-            New-Item -Path $parentPath -Name $item.Name -ItemType File -Value $item.Body
+            $param["ItemType"] = "File"
+            $param["Value"] = $item.Body
         }
         "Directory" {
-            Write-Verbose ("Writing directory item {0} at {1}" -f $item.Name, $parentPath)
-            New-Item -Path $parentPath -Name $item.Name -ItemType Directory 
+            $param["ItemType"] = "Directory"
         }
     }
+    Write-Verbose ("Writing {0} item {1} at {2}" -f $item.type, $item.Name, $parentPath  )
+    New-Item -Path $parentPath -Name $item.Name @param
 
 }
 
