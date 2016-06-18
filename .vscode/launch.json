@@ -10,11 +10,11 @@
             "cwd": "${file}"
         },
         {
-            "name": "PowerShell x86",
-            "type": "PowerShell x86",
+            "name": "psake",
+            "type": "PowerShell",
             "request": "launch",
-            "program": "${file}",
-            "args": [],
+            "program": "${workspaceRoot}\\wrapper.ps1",
+            //"args": [],
             "cwd": "${file}"
         }
     ]

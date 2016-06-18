@@ -10,8 +10,8 @@
     "tasks":[
         
         {
-            "taskName": "Test",
-            "isTestCommand": true,
+            "taskName": "Unit",
+            "isTestCommand": true
             
         }
         

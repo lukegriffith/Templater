@@ -1,8 +1,16 @@
+Task Default -depends "Unit", "Acceptance"
 
-Task -name "Test" -action {
+
+Task -Name PreDeploy -action { 
+
+    ni -it j -Path "$env:USERPROFILE\Documents\WindowsPowerShell\Modules\Templater" -Value $PSScriptRoot
+
+}
 
 
-    #Import-Module $PSScriptRoot\Templater.psm1
+Task -name Unit -action {
+
+    ipmo Templater
     Set-Location $PSScriptRoot;
     $pOut = Invoke-Pester -passthru
     
@@ -10,4 +18,17 @@ Task -name "Test" -action {
         Write-Error "Unit testing failed."
     }
     
+}
+
+Task -name Acceptance -action {
+
+    pushd
+    cd $PSScriptRoot\Artifacts 
+
+    Invoke-Template -Name exampleTemplate.ps1
+
+
+
+
+
 }
